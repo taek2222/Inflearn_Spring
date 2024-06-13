@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
+
     @AfterEach
     public void afterEach() {
         repository.clearStore();
@@ -18,30 +19,26 @@ public class MemoryMemberRepositoryTest {
 
     @Test
     public void save() {
-        Member member1 = new Member();
-        member1.setName("spring1");
-        repository.save(member1);
+        Member member = new Member();
+        member.setName("Oh Yeon Taek");
 
-        Member member2 = new Member();
-        member2.setName("spring2");
-        repository.save(member2);
+        repository.save(member);
 
-        Member result = repository.findByName("spring1").get();
-
-        assertThat(result).isEqualTo(member1);
+        Member result = repository.findById(member.getId()).get();
+        assertThat(member).isEqualTo(result);
     }
 
     @Test
     public void findByName() {
         Member member1 = new Member();
-        member1.setName("spring1");
+        member1.setName("Oh Yeon Taek");
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("spring2");
+        member2.setName("Yeon Taek");
         repository.save(member2);
 
-        Member result = repository.findByName("spring1").get();
+        Member result = repository.findByName("Oh Yeon Taek").get();
 
         assertThat(result).isEqualTo(member1);
     }
@@ -49,16 +46,15 @@ public class MemoryMemberRepositoryTest {
     @Test
     public void findAll() {
         Member member1 = new Member();
-        member1.setName("spring1");
+        member1.setName("Oh Yeon Taek");
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("spring2");
+        member2.setName("Yeon Taek");
         repository.save(member2);
 
         List<Member> result = repository.findAll();
 
         assertThat(result.size()).isEqualTo(2);
     }
-
 }
