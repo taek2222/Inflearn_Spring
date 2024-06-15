@@ -12,11 +12,13 @@ public class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
+    // 실행 이후 초기화
     @AfterEach
     public void afterEach() {
         repository.clearStore();
     }
 
+    // 저장 테스트
     @Test
     public void save() {
         Member member = new Member();
@@ -28,6 +30,7 @@ public class MemoryMemberRepositoryTest {
         assertThat(member).isEqualTo(result);
     }
 
+    // name 기반 검색 테스트
     @Test
     public void findByName() {
         Member member1 = new Member();
