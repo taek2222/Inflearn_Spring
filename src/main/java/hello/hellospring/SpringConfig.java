@@ -20,6 +20,11 @@ public class SpringConfig {
         return new MemberService(memberRepository);
     }
 
+//    @Bean
+//    public TimeTraceAop timeTraceAop() {
+//        return new TimeTraceAop();
+//    }
+
     /**
      * JDBC, Template, JPA 각각 실험
      */
