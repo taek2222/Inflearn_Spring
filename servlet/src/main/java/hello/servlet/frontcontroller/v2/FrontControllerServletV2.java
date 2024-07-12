@@ -1,5 +1,6 @@
 package hello.servlet.frontcontroller.v2;
 
+import hello.servlet.frontcontroller.ModelView;
 import hello.servlet.frontcontroller.MyView;
 import hello.servlet.frontcontroller.v2.controller.MemberFormControllerV2;
 import hello.servlet.frontcontroller.v2.controller.MemberListControllerV2;
@@ -37,6 +38,7 @@ public class FrontControllerServletV2 extends HttpServlet {
         }
 
         MyView myView = controller.process(request, response);
-        myView.render(request, response);
+        ModelView mv = null;
+        myView.render(mv.getModel(), request, response);
     }
 }
