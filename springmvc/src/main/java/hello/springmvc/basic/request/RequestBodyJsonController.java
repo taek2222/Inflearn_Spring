@@ -56,7 +56,7 @@ public class RequestBodyJsonController {
     }
 
     @ResponseBody
-    @PostMapping("/request-body-json-v3")
+    @PostMapping("/request-body-json-v4")
     public String requestBodyJsonV4(HttpEntity<HelloData> httpEntity) {
         HelloData data = httpEntity.getBody();
         log.info("username={}, age={}", data.getUsername(), data.getAge());
